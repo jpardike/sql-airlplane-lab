@@ -44,35 +44,30 @@
   );
   ```
 
-1. Copy [airlines.csv](airlines.csv),  [airports.csv](airports.csv),  and [routes.csv](routes.csv) to your Desktop directory on your computer.
+1. You can check if above tables are created by running command `\dt` in your psql shell. 
+
+2. Clone this repo and copy [airlines.csv](airlines.csv),  [airports.csv](airports.csv),  and [routes.csv](routes.csv) to your Desktop directory on your computer.
 
 1. Run the following code, substituting your computer's username for mine.  If you're unsure of the full path, `cd` to your Desktop and `pwd`.
 
   ```sql
-  COPY routes FROM '/Users/reuben/Desktop/routes.csv' DELIMITER ',' CSV;
-  COPY airports FROM '/Users/reuben/Desktop/airports.csv' DELIMITER ',' CSV;
-  COPY airlines FROM '/Users/reuben/Desktop/airlines.csv' DELIMITER ',' CSV;
+  COPY routes FROM '/Users/<your-username>/Desktop/routes.csv' DELIMITER ',' CSV;
+  COPY airports FROM '/Users/<your-username>/Desktop/airports.csv' DELIMITER ',' CSV;
+  COPY airlines FROM '/Users/<your-username>/Desktop/airlines.csv' DELIMITER ',' CSV;
   ```
 
-1. You should now have seeded three tables with flight data.
+1. You should now have seeded three tables with flight data. Run `SELECT * FROM <table-name> LIMIT 10;` to confirm.
 
 ## Goal
 
-Find out how many flights go from NYC to Paris
+1. Select airport code for airports LIKE 'John F Kennedy' or 'De Gaulle'. 
+2. Select all the flights originating from 'JFK' AND going to 'CDG'.
+3. Find out the NUMBER of airports in Canada.
+4. Select airport names IN the following countries- Algeria, Ghana, Ethiopia, order by country.  
+5. Select all the airports that airlines 'Germania' flies from.
 
-## Stretch Goals
+##Bonus
 
-- Do this so that just the number appears as the result of only one SQL statement
-- Which airlines travel from NYC to Paris?
-- Find all the flights that leave NYC.  Give me a list of how many go to each destination city.
+If you want to practice writing SQL queries more. Create an account on hackerrank.com and follow this link- 
 
-## Hints
-
-- The routes table has a column called `origin_id` and another called `destination_id`.  These map to the `id` column in the airport table.
-- You're going to have to use the airports table twice in the same SQL statement.  In order to tell which airport is the `destination` and which is the `origin`, you're going to have to temporarily rename the airports table like so:
-
-  ```sql
-    /* note that once you rename a table, you MUST refer to it by its new name */
-    SELECT * FROM airports AS origin WHERE origin.city = 'New York';
-    /* later on in the SQL statement, when dealing with the destination, you should do the same for airports AS destination */
-  ```
+https://www.hackerrank.com/domains/sql?badge_type=sql&filters%5Bdifficulty%5D%5B%5D=easy&filters%5Bsubdomains%5D%5B%5D=select 
