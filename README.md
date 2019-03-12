@@ -66,7 +66,7 @@
 4. Select airport names IN the following countries- Algeria, Ghana, Ethiopia, order by country.  
 5. Select all the airports that airlines 'Germania' flies from.
 
-##Bonus
+## Bonus
 
 If you want to practice writing SQL queries more. Create an account on hackerrank.com and follow this link- 
 
