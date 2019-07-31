@@ -15,16 +15,24 @@ SELECT COUNT(*)
 FROM airports
 WHERE country LIKE 'Canada';
 
---Select all the airports that airlines 'Germania' flies from.
-SELECT a.name AS airlines, b.name as airports
-FROM routes r, airlines a, airports b
-WHERE a.id = r.airline_id
-AND r.origin_code = b.iata_faa
-AND a.name='Germania';
-
 --Select airport names in the following countries- Algeria, Ghana, Ethiopia, order by country.
 SELECT a.name, a.city, a.country
 FROM airports a
 WHERE a.country IN ('Ghana', 'Algeria', 'Ethiopia')
 ORDER BY a.country;
+
+--Select all the airports that airlines 'Germania' flies from.
+SELECT DISTINCT(b.name) as airports
+FROM routes r, airlines a, airports b
+WHERE a.id = r.airline_id
+AND r.origin_code = b.iata_faa
+AND a.name='Germania';
+
+--OR(another solution)
+SELECT DISTINCT(routes.origin_code)
+FROM routes                          
+INNER JOIN airlines
+ON airlines.id = routes.airline_id
+WHERE airlines.id = 2547;
+
 
