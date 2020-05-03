@@ -29,10 +29,12 @@ AND r.origin_code = b.iata_faa
 AND a.name='Germania';
 
 --OR(another solution)
-SELECT DISTINCT(routes.origin_code)
-FROM routes                          
-INNER JOIN airlines
-ON airlines.id = routes.airline_id
-WHERE airlines.id = 2547;
+SELECT DISTINCT( ap.name )
+FROM   airlines a
+       INNER JOIN routes r
+               ON a.id = r.airline_id
+       INNER JOIN airports ap
+               ON r.origin_code = ap.iata_faa
+WHERE  a.name LIKE 'Germania%'
 
 
